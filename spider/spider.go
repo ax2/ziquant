@@ -32,3 +32,5 @@ type Fund struct {
 	Zjzfe    float64 `json:"zjzfe"`      //
 	Zmjgm    string  `json:"zmjgm"`      //
 }
+
+type FundList []*Fund

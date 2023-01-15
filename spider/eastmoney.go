@@ -65,7 +65,7 @@ func (s *EastMoneySpider) Visit(url string) (string, error) {
 	return string(body), nil
 }
 
-func (s *EastMoneySpider) FundList(page int64) (total int64, pages int64, items []*Fund) {
+func (s *EastMoneySpider) FundList(page int64) (total int64, pages int64, items FundList) {
 	prefix := "var rankData = "
 	ret, err := s.Visit(fmt.Sprintf("http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=all&rs=&gs=0&sc=1nzf&st=desc&sd=2021-12-24&ed=2022-12-24&qdii=&tabSubtype=,,,,,&pi=%d&pn=50&dx=1&v=0.4548809002246763", page))
 	if err != nil || len(ret) < len(prefix)+1 {
@@ -112,7 +112,7 @@ func (s *EastMoneySpider) FundList(page int64) (total int64, pages int64, items 
 			Created:    ff[16],
 		}
 		items = append(items, item)
-		fmt.Printf("%+v\n", item)
+		//fmt.Printf("%+v\n", item)
 	}
 
 	total = result.AllNum
